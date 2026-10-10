@@ -211,6 +211,14 @@ a{color:inherit}
 .extra-pdf b{display:block;font-family:"Playfair Display",serif;font-weight:500;font-size:22px;color:var(--txt)}
 .extra-pdf p{color:var(--grau);margin:8px 0 16px;font-size:16px}
 
+.zustimmung{display:flex;gap:10px;align-items:flex-start;text-align:left;font-size:13px;line-height:1.45;color:var(--grau);margin:4px 0 14px;cursor:pointer}
+.zustimmung input{accent-color:var(--beere);margin-top:3px;flex:none;width:16px;height:16px}
+.opt-in{border:0;cursor:pointer;font-family:Inter,sans-serif}
+.opt-in[disabled]{opacity:.45;cursor:not-allowed}
+.btn-rand.opt-in{border:1.5px solid #2B243333;background:#fff}
+.bestaetigt{margin-top:14px;background:var(--rose2);border-radius:14px;padding:16px 18px;text-align:left;font-size:15px;color:var(--txt)}
+.bestaetigt b{display:block;color:var(--quelle);margin-bottom:4px}
+
 /* Wunsch */
 .wunsch{background:var(--beere);color:#fff;padding:100px 0}
 .wunsch .mitte p{color:#ffffffd9}
@@ -380,7 +388,7 @@ function balkenLos(box){setTimeout(function(){box.querySelectorAll('.spur i').fo
   function zeigErg(){
     setTimeout(function(){
       document.getElementById('B-quiz').hidden=true;var e=document.getElementById('B-erg');e.hidden=false;
-      e.innerHTML=dialSVG('B')+ergebnis(k,s,6,6)+'<div class="extra-pdf"><span class="gratis">Kostenlos</span><b>Magst du mehr?</b><p>Deine ausführliche Auswertung mit 3 Impulsen für deinen Alltag schicke ich dir gern kostenlos als PDF.</p><div class="mail-felder"><input placeholder="Dein Vorname"><input type="email" placeholder="Deine E-Mail-Adresse"></div><a class="btn btn-rand" href="#">Ja, schick sie mir</a><p class="nl-klein">Danach bekommst du ab und zu Post von mir. Jederzeit mit einem Klick abbestellbar.</p></div><div class="mitte-knopf"><button class="btn schalter" id="B-neu">Nochmal starten</button></div>';
+      e.innerHTML=dialSVG('B')+ergebnis(k,s,6,6)+'<div class="extra-pdf"><span class="gratis">Kostenlos</span><b>Magst du mehr?</b><p>Deine ausführliche Auswertung mit 3 Impulsen für deinen Alltag schicke ich dir gern kostenlos als PDF.</p><div class="mail-felder"><input placeholder="Dein Vorname"><input type="email" placeholder="Deine E-Mail-Adresse"></div><label class="zustimmung"><input type="checkbox" class="zu-ok"><span>Ja, ich möchte das kostenlos erhalten und bekomme dazu Jasmins Newsletter. Abmeldung jederzeit möglich. Mehr dazu in der <u>Datenschutzerklärung</u>.</span></label><button class="btn btn-rand opt-in" disabled>Ja, schick sie mir</button><div class="bestaetigt" hidden></div></div><div class="mitte-knopf"><button class="btn schalter" id="B-neu">Nochmal starten</button></div>';
       setTimeout(function(){nadel('B',k,s);},100);balkenLos(e);
       document.getElementById('B-neu').onclick=function(){i=0;k=0;s=0;e.hidden=true;document.getElementById('B-quiz').hidden=false;zeige();};
     },400);
@@ -396,6 +404,8 @@ window.addEventListener("DOMContentLoaded",function(){
   p.addEventListener("click",function(e){if(e.target===p)zu();});
   document.getElementById("popup-los").onclick=function(){zu();var ko=document.getElementById("kompass");ko.scrollIntoView({behavior:"smooth",block:"center"});};
 });
+document.addEventListener("change",function(e){if(e.target.classList&&e.target.classList.contains("zu-ok")){var b=e.target.closest(".extra-pdf, .b-form").querySelector(".opt-in");b.disabled=!e.target.checked;}});
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".opt-in");if(!b||b.disabled)return;e.preventDefault();var box=b.closest(".extra-pdf, .b-form");var m=box.querySelector(".bestaetigt");m.innerHTML="<b>Fast geschafft! 💌</b>Ich habe dir gerade eine E-Mail geschickt. Bitte klick dort auf den Bestätigungs-Link, dann kommt dein PDF sofort.";m.hidden=false;b.hidden=true;});
 </script>
 
 <section class="wunsch-c">
@@ -490,7 +500,7 @@ window.addEventListener("DOMContentLoaded",function(){
       <h2>Post von Jasmin:<br><em>Impulse für deine Wechseljahre</em></h2>
       <p class="lead">Melde dich an und bekomm sofort deine <b>7 kleinen Rituale für mehr Leichtigkeit</b> als PDF. Danach einmal im Monat Post von mir.</p>
       <ul class="haken"><li>Sofort dein Geschenk im Postfach</li><li>Einmal im Monat ein Impuls für Körper und Seele</li><li>Als Erste erfährst du von neuen Angeboten</li></ul>
-      <div class="b-form"><input placeholder="Dein Vorname"><input placeholder="Deine E-Mail-Adresse"><a class="btn">Ja, schick mir mein Geschenk</a></div>
+      <div class="b-form"><input placeholder="Dein Vorname"><input placeholder="Deine E-Mail-Adresse"><label class="zustimmung"><input type="checkbox" class="zu-ok"><span>Ja, ich möchte das kostenlos erhalten und bekomme dazu Jasmins Newsletter. Abmeldung jederzeit möglich. Mehr dazu in der <u>Datenschutzerklärung</u>.</span></label><button class="btn btn-voll opt-in" disabled>Ja, schick mir mein Geschenk</button><div class="bestaetigt" hidden></div></div>
       <p class="klein">Kostenlos und jederzeit abbestellbar.</p>
     </div>
     <div class="handy"><div class="screen">
