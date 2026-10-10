@@ -206,7 +206,9 @@ a{color:inherit}
 @media (max-width:900px){.sb-zwei{grid-template-columns:1fr}.sb-fazit h3{font-size:24px}}
 
 .extra-pdf{max-width:600px;margin:30px auto 0;background:#fff;border:1.5px dashed #A3245E44;border-radius:18px;padding:24px;text-align:center}
-.extra-pdf b{font-family:"Playfair Display",serif;font-weight:500;font-size:22px;color:var(--txt)}
+.gratis{display:inline-block;background:var(--rose2);color:var(--quelle);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:10px}
+.extra-pdf .nl-klein{font-size:13px;margin:12px 0 0}
+.extra-pdf b{display:block;font-family:"Playfair Display",serif;font-weight:500;font-size:22px;color:var(--txt)}
 .extra-pdf p{color:var(--grau);margin:8px 0 16px;font-size:16px}
 
 /* Wunsch */
@@ -378,7 +380,7 @@ function balkenLos(box){setTimeout(function(){box.querySelectorAll('.spur i').fo
   function zeigErg(){
     setTimeout(function(){
       document.getElementById('B-quiz').hidden=true;var e=document.getElementById('B-erg');e.hidden=false;
-      e.innerHTML=dialSVG('B')+ergebnis(k,s,6,6)+'<div class="extra-pdf"><b>Magst du mehr?</b><p>Deine ausführliche Auswertung mit 3 Impulsen für deinen Alltag schicke ich dir gern als PDF.</p><div class="mail-felder"><input placeholder="Dein Vorname"><input type="email" placeholder="Deine E-Mail-Adresse"></div><a class="btn btn-rand" href="#">Ja, schick sie mir</a></div><div class="mitte-knopf"><button class="btn schalter" id="B-neu">Nochmal starten</button></div>';
+      e.innerHTML=dialSVG('B')+ergebnis(k,s,6,6)+'<div class="extra-pdf"><span class="gratis">Kostenlos</span><b>Magst du mehr?</b><p>Deine ausführliche Auswertung mit 3 Impulsen für deinen Alltag schicke ich dir gern kostenlos als PDF.</p><div class="mail-felder"><input placeholder="Dein Vorname"><input type="email" placeholder="Deine E-Mail-Adresse"></div><a class="btn btn-rand" href="#">Ja, schick sie mir</a><p class="nl-klein">Danach bekommst du ab und zu Post von mir. Jederzeit mit einem Klick abbestellbar.</p></div><div class="mitte-knopf"><button class="btn schalter" id="B-neu">Nochmal starten</button></div>';
       setTimeout(function(){nadel('B',k,s);},100);balkenLos(e);
       document.getElementById('B-neu').onclick=function(){i=0;k=0;s=0;e.hidden=true;document.getElementById('B-quiz').hidden=false;zeige();};
     },400);
