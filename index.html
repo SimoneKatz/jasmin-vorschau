@@ -426,7 +426,7 @@ document.addEventListener("click",function(e){var b=e.target.closest&&e.target.c
 <section class="loesung" id="angebote">
   <div class="wrap">
     <div class="mitte">
-      <h2>Dein Weg durch die <em>Verwandlung</em></h2>
+      <h2>Dein Weg durch die&nbsp;<em>Verwandlung</em></h2>
       <p>Wir schauen gemeinsam, wo du gerade stehst, körperlich und seelisch. Dann gehen wir Schritt für Schritt.</p>
     </div>
     <div class="stufen">
@@ -536,5 +536,8 @@ document.addEventListener("click",function(e){var b=e.target.closest&&e.target.c
 <div class="popup-hg" id="popup" hidden><div class="popup"><button class="popup-zu" id="popup-zu" aria-label="Schließen">×</button><span class="zusatz">✨ Zusatzbaustein</span><h3>Wo stehst du gerade?</h3><p>Finde es in 6 kurzen Fragen heraus, mit deinem kostenlosen <em>Wechseljahres-Kompass</em>.</p><button class="btn btn-voll" id="popup-los">Kompass starten</button><button class="popup-spaeter" id="popup-spaeter">Später</button></div></div>
 <button class="zusatz-knopf" id="schalter">✨ Zusatz 1 zeigen</button>
 <a class="entwurf" style="text-decoration:none">Erster Entwurf · <b>Simone Katz🌸</b> Webdesign</a>
+<script>/* letzte zwei Wörter koppeln, nie ein Einzelwort in der letzten Zeile (Regel feedback_kein_einzelwort_zeile) */
+document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("p,li,h1,h2,h3,b,i,td,span,a,button,div").forEach(function(el){if(el.querySelector("div,p,ul,ol,table,br,li,h1,h2,h3"))return;var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n,last=null;while(n=w.nextNode()){if(/\S\s+\S/.test(n.textContent.trim()))last=n;}if(!last)return;var t=last.textContent,m=t.match(/^(.*\S)\s+(\S+\s*)$/s);if(m&&m[2].trim().length<=18)last.textContent=m[1]+" "+m[2];});});
+</script>
 </body>
 </html>
