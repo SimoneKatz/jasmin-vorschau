@@ -272,6 +272,10 @@ a{color:inherit}
 .sterne{color:#E7A900;font-size:28px;letter-spacing:6px}
 .stimmen h2{font-size:clamp(30px,3.4vw,42px);margin-top:8px}
 .chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.zitate{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:960px;margin:30px auto 0}
+.zitate p{font-family:"EB Garamond",serif;font-style:italic;font-size:24px;line-height:1.35;color:var(--beere);border-top:2px solid var(--beere);padding-top:16px;margin:0}
+.zitat-quelle{margin-top:22px;font-size:14px;color:var(--grau);letter-spacing:.5px}
+@media(max-width:760px){.zitate{grid-template-columns:1fr;gap:20px}}
 .chips span{background:var(--rose);border-radius:30px;padding:10px 22px;font-family:"Playfair Display",serif;font-style:italic;font-size:21px;color:var(--beere)}
 
 /* Ende */
@@ -487,7 +491,8 @@ document.addEventListener("click",function(e){var b=e.target.closest&&e.target.c
   <div class="wrap">
     <div class="sterne">★★★★★</div>
     <h2>5,0 bei Google</h2>
-    <div class="chips"><span>sympathisch</span><span>kompetent</span><span>super erreichbar</span></div>
+    <div class="zitate"><p>„Sehr sympathische und kompetente Frau“</p><p>„Das tolle Coaching und den netten Kontakt“</p><p>„Super erreichbar und reagiert umgehend“</p></div>
+    <div class="zitat-quelle">aus Jasmins Google-Bewertungen</div>
   </div>
 </section>
 
